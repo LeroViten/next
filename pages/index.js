@@ -1,14 +1,31 @@
 import Head from 'next/head';
 import Heading from '../components/Heading';
+import Socials from '../components/Socials';
 import s from '../styles/Home.module.scss';
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const response = await fetch(`${process.env.API_HOST}/socials`);
+  const data = await response.json();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { socials: data },
+  };
+};
+
+export default function Home({ socials }) {
   return (
     <div className={s.wrapper}>
       <Head>
         <title>Home Page</title>
       </Head>
       <Heading text="Hello from react NextJS" />
+      <Socials socials={socials} />
     </div>
   );
 }
