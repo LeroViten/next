@@ -1,5 +1,7 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Heading from '../../components/Heading';
+import s from '../../styles/Home.module.scss';
 
 export const getStaticProps = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -23,11 +25,11 @@ export default function Users({ contacts }) {
         <title>Contacts List:</title>
       </Head>
       <Heading text="This is a list of Contacts:" />
-      <ul>
+      <ul className={s.list}>
         {contacts &&
-          contacts.map(({ id, name, email }) => (
+          contacts.map(({ id, name }) => (
             <li key={id}>
-              <strong>{name}</strong> ({email})
+              <Link href={`/contacts/${id}`}>{name}</Link>
             </li>
           ))}
       </ul>
