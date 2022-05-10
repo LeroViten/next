@@ -18,3 +18,14 @@
     }
   }
 }
+
+.post_item {
+  margin-bottom: 5px;
+  & a {
+    transition: all 300ms ease-in-out;
+    &:hover,
+    &:focus-visible {
+      color: #c5c5c5;
+    }
+  }
+}

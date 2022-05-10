@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Heading from '../../components/Heading';
 import { postType } from '../../types';
+import s from '../../styles/Home.module.scss';
 
 type postsPropsTypes = {
   posts: [postType];
@@ -34,7 +35,7 @@ const Posts: FC<postsPropsTypes> = ({ posts }) => {
       <ul>
         {posts &&
           posts.map(({ id, title }) => (
-            <li key={id}>
+            <li key={id} className={s.post_item}>
               <Link href={`/posts/${id}`}>{title}</Link>
             </li>
           ))}
