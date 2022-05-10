@@ -1,6 +1,12 @@
+import { FC } from 'react';
+import { postType } from '../types';
 import Heading from './Heading';
 
-export default function PostInfo({ post }) {
+type postInfoProps = {
+  post: postType;
+};
+
+const PostInfo: FC<postInfoProps> = ({ post }) => {
   const { title, body } = post || {};
 
   if (!post) {
@@ -13,4 +19,6 @@ export default function PostInfo({ post }) {
       <p>{body}</p>
     </>
   );
-}
+};
+
+export default PostInfo;

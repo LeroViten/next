@@ -1,7 +1,13 @@
+import { FC } from 'react';
 import Head from 'next/head';
+import { socialsType } from '../types';
 import s from '../styles/Socials.module.scss';
 
-export default function Socials({ socials }) {
+type socialsPropTypes = {
+  socials: [socialsType];
+};
+
+const Socials: FC<socialsPropTypes> = ({ socials }) => {
   if (!socials) {
     return null;
   }
@@ -26,4 +32,6 @@ export default function Socials({ socials }) {
       </ul>
     </>
   );
-}
+};
+
+export default Socials;

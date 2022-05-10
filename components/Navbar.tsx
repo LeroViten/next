@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -9,7 +10,7 @@ const navigation = [
   { id: 3, title: 'Contacts', path: '/contacts' },
 ];
 
-export default function Navbar() {
+const Navbar: FC = () => {
   const { pathname } = useRouter();
   return (
     <nav className={s.nav}>
@@ -30,4 +31,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

@@ -1,9 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { FC } from 'react';
+import { GetStaticProps } from 'next';
 import Heading from '../../components/Heading';
+import { contactType } from '../../types';
 import s from '../../styles/Home.module.scss';
 
-export const getStaticProps = async () => {
+type contactsPropsTypes = {
+  contacts: [contactType];
+};
+
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const data = await response.json();
 
@@ -18,7 +25,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Users({ contacts }) {
+const Contacts: FC<contactsPropsTypes> = ({ contacts }) => {
   return (
     <>
       <Head>
@@ -35,4 +42,6 @@ export default function Users({ contacts }) {
       </ul>
     </>
   );
-}
+};
+
+export default Contacts;
